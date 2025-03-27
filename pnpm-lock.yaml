@@ -27,7 +27,7 @@ importers:
   packages/demo:
     devDependencies:
       '@types/node':
-        specifier: ^22.13.13
+        specifier: ^22.13.14
         version: 22.13.14
       publint:
         specifier: ^0.3.9
