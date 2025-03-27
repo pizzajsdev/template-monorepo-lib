@@ -2,11 +2,14 @@
 
 This is a template for a monorepo library.
 
-## Requirements
+This stack uses:
 
 - Node.js (runtime)
-- Bun (tests, scripts)
-- pnpm (package manager)
+- Bundler: tsup + esbuild
+- Package manager: pnpm
+- Testing: vitest
+- Linting and formatting: stricter tsconfig rules, prettier, sort-package-json, publint
+- Circular dependency detection: madge
 
 ## Features
 

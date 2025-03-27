@@ -28,10 +28,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 'Check code quality'
-        uses: ./.github/actions/quality-check
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Lint'
+        run: pnpm lint
+
+      - name: 'Run tests'
+        run: pnpm test
 
       - name: 'Build project'
         run: pnpm build

@@ -3,16 +3,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "echo 'TODO'",
-    "dev": "echo 'TODO'",
+    "build": "pnpm -r run build",
+    "dev": "pnpm -r --parallel run dev",
     "format": "bun run --bun prettier --write README.md .github/ ./packages && bun run format:pkg",
-    "format:lint": "bun run --bun prettier --check README.md .github/ ./packages",
-    "format:pkg": "sort-package-json package.json packages/*/package.json",
-    "lint": "bun run --run typecheck && bun run --run format:lint && bun run lint:circular-deps",
-    "lint:circular-deps": "bun run --bun madge --circular --extensions ts,tsx packages/",
+    "format:pkg": "bun run --bun sort-package-json package.json packages/*/package.json",
+    "lint": "bun run --run typecheck && bun run --run lint:prettier && bun run lint:madge",
+    "lint:madge": "bun run --bun madge --circular --extensions ts,tsx packages/",
+    "lint:prettier": "bun run --bun prettier --check README.md .github/ ./packages",
     "prepare": "bun run format:pkg",
-    "test": "echo 'TODO: bun test packages/'",
-    "typecheck": "echo 'TODO: bun run --bun tsc'",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "typecheck": "pnpm -r run typecheck",
     "update-deps": "pnpm -r up --latest --save",
     "postupdate-deps": "pnpm install && echo 'Installed dependencies again to apply overrides.'"
   },
@@ -20,7 +21,8 @@
     "madge": "^8.0.0",
     "prettier": "^3.5.3",
     "sort-package-json": "^3.0.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
   },
   "packageManager": "pnpm@10.7.0",
   "engines": {
