@@ -17,9 +17,10 @@ jobs:
   release:
     permissions:
       contents: write
+      packages: write
       id-token: write
-      issues: read
       pull-requests: write
+      issues: read
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
