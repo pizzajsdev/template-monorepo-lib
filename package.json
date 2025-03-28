@@ -5,19 +5,23 @@
   "scripts": {
     "build": "pnpm -r run build",
     "dev": "pnpm -r --parallel run dev",
-    "format": "bun run --bun prettier --write README.md .github/ ./packages && bun run format:pkg",
+    "format": "pnpm format:prettier && pnpm format:pkg",
     "format:pkg": "bun run --bun sort-package-json package.json packages/*/package.json",
-    "lint": "bun run --run typecheck && bun run --run lint:prettier && bun run lint:madge",
+    "format:prettier": "bun run --bun prettier --write README.md .github/ ./packages",
+    "lint": "pnpm typecheck && pnpm lint:prettier && pnpm lint:madge",
     "lint:madge": "bun run --bun madge --circular --extensions ts,tsx packages/",
     "lint:prettier": "bun run --bun prettier --check README.md .github/ ./packages",
-    "prepare": "bun run format:pkg",
+    "prepare": "pnpm format:pkg",
+    "release": "pnpm run build && changeset publish",
     "test": "vitest --run",
     "test:watch": "vitest",
     "typecheck": "pnpm -r run typecheck",
     "update-deps": "pnpm -r up --latest --save",
-    "postupdate-deps": "pnpm install && echo 'Installed dependencies again to apply overrides.'"
+    "postupdate-deps": "pnpm install && echo 'Installed dependencies again to apply any pnpm overrides.'",
+    "version-packages": "changeset version && pnpm format"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.28.1",
     "madge": "^8.0.0",
     "prettier": "^3.5.3",
     "sort-package-json": "^3.0.0",

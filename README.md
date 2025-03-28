@@ -8,8 +8,14 @@ This stack uses:
 - Bundler: tsup + esbuild
 - Package manager: pnpm
 - Testing: vitest
-- Linting and formatting: stricter tsconfig rules, prettier, sort-package-json, publint
+- Linting and formatting:
+  - tsconfig with stricter rules, including `erasableSyntaxOnly`
+  - prettier
+  - sort-package-json
+  - publint
 - Circular dependency detection: madge
+- Release management: changesets + Github Actions
+- Package Registry: Github
 
 ## Features
 
