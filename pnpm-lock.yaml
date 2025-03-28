@@ -54,6 +54,21 @@ importers:
         specifier: ^5.8.2
         version: 5.8.2
 
+  packages/demo2:
+    devDependencies:
+      '@types/node':
+        specifier: ^22.13.14
+        version: 22.13.14
+      publint:
+        specifier: ^0.3.9
+        version: 0.3.9
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.2
+
 packages:
 
   '@babel/code-frame@7.26.2':
