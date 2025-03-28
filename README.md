@@ -13,6 +13,8 @@ This stack uses:
   - prettier
   - sort-package-json
   - publint
+  - Commitlint
+  - Husky (for hooks)
 - Circular dependency detection: madge
 - Release management: changesets + Github Actions
 - Package Registry: Github
