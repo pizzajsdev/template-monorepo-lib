@@ -15,6 +15,8 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
+    name: 'Release'
+    if: github.repository == 'pizzajsdev/template-monorepo-lib'
     permissions:
       contents: write
       packages: write
@@ -31,15 +33,18 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Lint'
         run: pnpm lint
-      - name: 'Run tests'
+      - name: 'Check missing changesets'
+        run: pnpm changeset status
+      - name: 'Test'
         run: pnpm test
       - name: Create Release Pull Request or Publish to package registry
         uses: changesets/action@v1
         id: changesets
         with:
           # this expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: pnpm run release
-          version: pnpm run version-packages
+          publish: pnpm run changeset:release
+          version: pnpm run changeset:version-packages
+          commit: 'chore(release): update monorepo packages versions'
           createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

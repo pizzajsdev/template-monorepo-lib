@@ -1,9 +1,5 @@
 {
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build"
-  ],
+  "exclude": ["node_modules", "dist", "build"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "target": "ES2022",
