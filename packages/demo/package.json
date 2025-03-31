@@ -1,6 +1,6 @@
 {
   "name": "@pizzajsdev/demo-pkg",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Demo package",
   "homepage": "https://github.com/pizzajsdev/template-monorepo-libs#readme",
   "bugs": {
